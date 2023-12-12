@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// list of renders
 const Menu = [
   {
     id: 1,
