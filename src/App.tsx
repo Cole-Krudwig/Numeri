@@ -9,7 +9,12 @@ interface Tab {
 }
 
 const App: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(1);
+  // Load the active index from localStorage or set it to the default value
+  const initialActiveIndex = parseInt(
+    localStorage.getItem("activeIndex") || "1",
+    10
+  );
+  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
 
   const tabs: Tab[] = useMemo(
     () => [
@@ -21,10 +26,13 @@ const App: React.FC = () => {
     [] // Empty dependency array, since the tabs array does not depend on any props or state
   );
 
-  const handleTabClick = (index: number) => setActiveIndex(index);
+  const handleTabClick = (index: number) => {
+    setActiveIndex(index);
+    localStorage.setItem("activeIndex", index.toString()); // Save the active index to localStorage
+  };
 
   useEffect(() => {
-    document.title = `${tabs[activeIndex - 1].title}`;
+    document.title = `Math Problems - ${tabs[activeIndex - 1].title}`;
   }, [activeIndex, tabs]);
 
   return (

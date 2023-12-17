@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const MathProblemGenerator: React.FC = () => {
+const Addition: React.FC = () => {
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
   const [userAnswer, setUserAnswer] = useState("");
   const [result, setResult] = useState("");
@@ -38,25 +38,28 @@ const MathProblemGenerator: React.FC = () => {
   };
 
   return (
-    <div>
-      <p>
-        <span id="problem">
+    <div className="flex items-center justify-center h-screen">
+      <div className="bg-gray-200 p-8 rounded shadow-md text-center">
+        <p className="text-2xl font-bold mb-4">
           {currentProblem.num1} + {currentProblem.num2} =
-        </span>
+        </p>
         <input
           type="text"
-          id="answer"
+          className="border p-2 mr-2"
           value={userAnswer}
           onChange={(e) => setUserAnswer(e.target.value)}
           onKeyUp={handleKeyPress}
         />
-        <button onClick={handleSubmit} id="submit">
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+          onClick={handleSubmit}
+        >
           Submit
         </button>
-      </p>
-      <p id="result">{result}</p>
+        <p className="mt-4">{result}</p>
+      </div>
     </div>
   );
 };
 
-export default MathProblemGenerator;
+export default Addition;
