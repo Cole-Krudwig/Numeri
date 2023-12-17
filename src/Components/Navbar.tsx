@@ -14,17 +14,21 @@ interface NavbarProps {
   onTabClick: (index: number) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ tabs, activeIndex, onTabClick }) => {
+const Navbar: React.FC<NavbarProps> = ({
+  tabs = [],
+  activeIndex,
+  onTabClick,
+}) => {
   return (
     <div>
-      <div className="bg-indigo-400 flex space-x-8 rounded-lg px-4 py-2">
+      <div className="bg-red-400 flex justify-center space-x-16 px-4 py-4">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             className={`${
               activeIndex === tab.id
-                ? "text-blue-600 border-b-2 border-white"
-                : ""
+                ? "text-white border-b-2 border-white"
+                : "hover:text-white hover:border-b-2 hover:border-white"
             }`}
             onClick={() => onTabClick(tab.id)}
           >
