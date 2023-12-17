@@ -29,8 +29,8 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <div>
-      <div className="bg-red-400 px-4 py-4">
+    <>
+      <div className="relative z-50 bg-red-400 px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo or Branding can be added here */}
 
@@ -59,30 +59,35 @@ const Navbar: React.FC<NavbarProps> = ({
             ))}
           </div>
         </div>
-
-        {/* Responsive Hamburger Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden mt-4">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                className={`block w-full py-2 ${
-                  activeIndex === tab.id
-                    ? "bg-gray-700 text-white"
-                    : "hover:bg-gray-300"
-                }`}
-                onClick={() => {
-                  onTabClick(tab.id);
-                  closeMenu();
-                }}
-              >
-                {tab.title}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
-    </div>
+
+      {/* Responsive Hamburger Menu */}
+      <div
+        className={`lg:hidden absolute inset-x-0 top-0 bg-blue-400 px-4 py-4
+         ${
+           isMenuOpen
+             ? "transform translate-y-0 mt-20 duration-1000"
+             : "transform -translate-y-full duration-1000"
+         }`}
+      >
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            className={`block w-full py-2 ${
+              activeIndex === tab.id
+                ? "bg-gray-700 text-white"
+                : "hover:bg-gray-300"
+            }`}
+            onClick={() => {
+              onTabClick(tab.id);
+              closeMenu();
+            }}
+          >
+            {tab.title}
+          </button>
+        ))}
+      </div>
+    </>
   );
 };
 
