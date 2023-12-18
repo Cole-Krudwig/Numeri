@@ -31,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <div className="relative z-50 bg-red-400 px-4 py-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-center items-center">
           {/* Logo or Branding can be added here */}
 
           {/* Hamburger Menu Icon */}
@@ -40,7 +40,8 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Navigation Links - Shown on larger screens */}
-          <div className="hidden lg:flex space-x-8">
+
+          <div className="hidden lg:flex space-x-16 text-white">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -66,8 +67,8 @@ const Navbar: React.FC<NavbarProps> = ({
         className={`lg:hidden absolute inset-x-0 top-0 bg-blue-400 px-4 py-4
          ${
            isMenuOpen
-             ? "transform translate-y-0 mt-20 duration-1000"
-             : "transform -translate-y-full duration-1000"
+             ? "transform translate-y-0 mt-20 duration-500"
+             : "transform -translate-y-full duration-500"
          }`}
       >
         {tabs.map((tab) => (
