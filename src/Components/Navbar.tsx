@@ -30,9 +30,9 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      <div className="flex relative z-50 bg-red-400 px-4 py-4">
+      <div className="flex relative z-50 bg-red-400 px-16 py-4">
         {/* Logo on Large Screens */}
-        <div className="lg:flex justify-start items-center mx-16">
+        <div className="flex items-center ml-16 mr-4">
           <img src="CalculatorLogo.png" alt="" width={100} />
         </div>
 
@@ -45,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Navigation Links - Shown on larger screens */}
-        <div className="hidden lg:flex items-center justify-center flex-1 space-x-16 text-white text-xl">
+        <div className="hidden lg:flex items-center justify-end flex-1 space-x-16 text-white text-xl mr-16">
           {tabs.map((tab) => (
             <button
               key={tab.id}

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 const Division: React.FC = () => {
+  const NavbarHeight = 164;
+
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
   const [userAnswer, setUserAnswer] = useState("");
   const [result, setResult] = useState("");
@@ -38,7 +40,10 @@ const Division: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div
+      className="flex items-center justify-center h-screen"
+      style={{ height: `calc(100vh - ${NavbarHeight}px)` }}
+    >
       <div className="bg-gray-200 p-8 rounded shadow-md text-center">
         <p className="text-2xl font-bold mb-4">
           {currentProblem.num1} ÷ {currentProblem.num2} =
