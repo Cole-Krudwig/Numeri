@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({
       <div className="flex relative z-50 bg-red-400 px-16 py-4">
         {/* Logo on Large Screens */}
         <div className="flex items-center ml-16 mr-4">
-          <img src="CalculatorLogo.png" alt="" width={100} />
+          <img src="CalculatorLogo.png" alt="" width={75} />
         </div>
 
         {/* Hamburger Menu Icon - Shown on Small Screens */}
