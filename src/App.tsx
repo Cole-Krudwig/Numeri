@@ -36,14 +36,16 @@ const App: React.FC = () => {
   }, [activeIndex, tabs]);
 
   return (
-    <div>
-      <Navbar
-        tabs={tabs}
-        activeIndex={activeIndex}
-        onTabClick={handleTabClick}
-      />
-      <MathProblemGenerator operation={tabs[activeIndex - 1].operation} />
-    </div>
+    <>
+      <div className="bg-graph-paper min-h-screen">
+        <Navbar
+          tabs={tabs}
+          activeIndex={activeIndex}
+          onTabClick={handleTabClick}
+        />
+        <MathProblemGenerator operation={tabs[activeIndex - 1].operation} />
+      </div>
+    </>
   );
 };
 

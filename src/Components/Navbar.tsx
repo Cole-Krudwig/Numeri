@@ -30,22 +30,25 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      <div className="flex relative z-50 bg-red-400 px-16 py-4">
+      <div className="flex relative z-50 bg-custom-red px-16 py-4 h-32">
         {/* Logo on Large Screens */}
-        <div className="flex items-center ml-16 mr-4">
+        <div className="flex items-center sm:ml-16">
           <img src="CalculatorLogo.png" alt="" width={100} />
+          <span className="hidden md:flex ml-16 text-white text-5xl">
+            <b>Numeri</b>
+          </span>
         </div>
 
         {/* Hamburger Menu Icon - Shown on Small Screens */}
         <div
-          className="flex lg:hidden justify-end items-center cursor-pointer text-white ml-auto mr-16"
+          className="flex xl:hidden justify-end items-center cursor-pointer text-white ml-auto sm:mr-16"
           onClick={toggleMenu}
         >
           <Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} />
         </div>
 
         {/* Navigation Links - Shown on larger screens */}
-        <div className="hidden lg:flex items-center justify-end flex-1 space-x-16 text-white text-xl mr-16">
+        <div className="hidden xl:flex items-center justify-end flex-1 space-x-16 text-white text-xl mr-16">
           {tabs.map((tab) => (
             <button
               key={tab.id}

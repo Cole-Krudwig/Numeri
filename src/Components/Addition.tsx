@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Addition: React.FC = () => {
-  const NavbarHeight = 164;
+  const NavbarHeight = 10;
 
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
   const [userAnswer, setUserAnswer] = useState("");
@@ -40,10 +40,7 @@ const Addition: React.FC = () => {
   };
 
   return (
-    <div
-      className="flex items-center justify-center"
-      style={{ height: `calc(100vh - ${NavbarHeight}px)` }}
-    >
+    <div className="flex items-center justify-center mt-16">
       <div className="bg-gray-200 p-8 rounded shadow-md text-center">
         <p className="text-2xl font-bold mb-4">
           {currentProblem.num1} + {currentProblem.num2} =
@@ -56,7 +53,7 @@ const Addition: React.FC = () => {
           onKeyUp={handleKeyPress}
         />
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-custom-yellow text-white px-4 py-2 rounded"
           onClick={handleSubmit}
         >
           Submit
