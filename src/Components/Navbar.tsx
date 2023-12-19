@@ -32,8 +32,9 @@ const Navbar: React.FC<NavbarProps> = ({
     <>
       <div className="flex relative z-50 bg-custom-red px-16 py-4 h-32">
         {/* Logo on Large Screens */}
+
         <div className="flex items-center sm:ml-16">
-          <img src="CalculatorLogo.png" alt="" width={100} />
+          <img src="CalculatorLogo.png" alt="" width={75} />
           <span className="hidden md:flex ml-16 text-white text-5xl">
             <b>Numeri</b>
           </span>
