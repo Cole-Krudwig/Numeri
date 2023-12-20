@@ -11,9 +11,17 @@
   display: block;
 }
 
+font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Inter-Regular"),
+    url("public/fonts/ttf/Inter-Regular.ttf") format("ttf");
+}
+
 @font-face {
   font-family: "Inter";
-  src: url("public/fonts/ttf/Inter-Italic.ttf") format("truetype");
-  font-weight: normal;
   font-style: normal;
+  font-weight: 700;
+  src: local("Inter-Bold"), url("public/fonts/ttf/Inter-Bold.ttf") format("ttf");
 }

@@ -36,7 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center sm:ml-16">
           <img src="CalculatorLogo.png" alt="" width={75} />
           <span className="hidden md:flex ml-16 text-white text-5xl">
-            <b>Numeri</b>
+            <div className="font-bold">Numeri</div>
           </span>
         </div>
 
