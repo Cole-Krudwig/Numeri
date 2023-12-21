@@ -6,6 +6,8 @@ module.exports = {
       colors: {
         "custom-red": "#F15E56",
         "custom-yellow": "#FCE180",
+        "custom-teal": "#00ada8",
+        "custom-tan": "#f3e5d0",
       },
       backgroundImage: {
         "graph-paper":

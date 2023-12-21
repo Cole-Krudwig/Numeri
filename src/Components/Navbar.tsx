@@ -34,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({
         {/* Logo on Large Screens */}
 
         <div className="flex items-center sm:ml-16">
-          <img src="CalculatorLogo.png" alt="" width={75} />
+          <img src="CalculatorLogo2.png" alt="" width={75} />
           <span className="hidden md:flex ml-16 text-white text-5xl">
             <div className="font-bold">Numeri</div>
           </span>
@@ -71,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
       {/* Responsive Hamburger Menu */}
       <div
-        className={`lg:hidden absolute inset-x-0 top-0 bg-blue-400 px-4 py-4
+        className={`xl:hidden absolute inset-x-0 top-0 bg-custom-red px-4 py-4
          ${
            isMenuOpen
              ? "transform translate-y-0 mt-32 duration-500"
@@ -81,10 +81,10 @@ const Navbar: React.FC<NavbarProps> = ({
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            className={`block w-full py-2 ${
+            className={`block w-full py-4 text-white text-lg ${
               activeIndex === tab.id
-                ? "bg-gray-700 text-white"
-                : "hover:bg-gray-300"
+                ? "bg-custom-yellow rounded-lg text-white"
+                : "hover:bg-gray-300 rounded-lg"
             }`}
             onClick={() => {
               onTabClick(tab.id);
