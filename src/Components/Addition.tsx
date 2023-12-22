@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 const Addition: React.FC = () => {
-  const NavbarHeight = 10;
-
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
   const [userAnswer, setUserAnswer] = useState("");
   const [result, setResult] = useState("");
