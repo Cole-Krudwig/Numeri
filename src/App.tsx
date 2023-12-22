@@ -32,7 +32,7 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    document.title = `Math Problems - ${tabs[activeIndex - 1].title}`;
+    document.title = `Numeri - ${tabs[activeIndex - 1].title}`;
   }, [activeIndex, tabs]);
 
   return (
