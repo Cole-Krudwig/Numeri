@@ -8,6 +8,10 @@ module.exports = {
         "custom-yellow": "#FCE180",
         "custom-teal": "#00ada8",
         "custom-tan": "#f3e5d0",
+        "custom-green-gray": "#7ea296",
+        "custom-green-dark": "#56776c",
+        "custom-salmon": "#f47056",
+        "custom-gray": "#e7e8e3",
       },
       backgroundImage: {
         "graph-paper":

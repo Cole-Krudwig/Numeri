@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      <div className="flex relative z-50 bg-custom-red px-16 py-4 h-32">
+      <div className="flex relative z-50 bg-custom-green-gray px-16 py-4 h-32">
         {/* Logo on Large Screens */}
 
         <div className="flex items-center sm:ml-16">
@@ -71,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
       {/* Responsive Hamburger Menu */}
       <div
-        className={`xl:hidden absolute inset-x-0 top-0 bg-custom-red px-4 py-4
+        className={`xl:hidden absolute inset-x-0 top-0 bg-custom-green-gray px-4 py-4
          ${
            isMenuOpen
              ? "transform translate-y-0 mt-32 duration-500"
@@ -83,7 +83,7 @@ const Navbar: React.FC<NavbarProps> = ({
             key={tab.id}
             className={`block w-full py-4 text-white text-lg ${
               activeIndex === tab.id
-                ? "bg-custom-yellow rounded-lg text-white"
+                ? "bg-custom-green-dark rounded-lg text-white"
                 : "hover:bg-gray-300 rounded-lg"
             }`}
             onClick={() => {
