@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Navbar from "./Components/Navbar";
 import MathProblemGenerator from "./Components/MathProblemGenerator";
+import DrawingBoard from "./Components/DrawingBoard";
 
 interface Tab {
   id: number;
@@ -45,6 +46,7 @@ const App: React.FC = () => {
         />
         <MathProblemGenerator operation={tabs[activeIndex - 1].operation} />
       </div>
+      <DrawingBoard />
     </>
   );
 };
