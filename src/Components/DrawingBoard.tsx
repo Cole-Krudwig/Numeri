@@ -91,28 +91,37 @@ const DrawingBoard: React.FC = () => {
 
   const draw = (x: number, y: number): void => {
     const navbarHeight = 60; // Set the height of your navbar
+    const questionBoxWidth = 200; // Set the width of your question box
+    const questionBoxHeight = 100; // Set the height of your question box
 
-    const questionBoxRect = questionBoxRef.current?.getBoundingClientRect();
     // Check if the cursor is within the dead zones (navbar or question box)
     const isCursorInDeadZone =
-      y < navbarHeight ||
-      (questionBoxRect &&
-        x > questionBoxRect.left &&
-        x < questionBoxRect.right &&
-        y > questionBoxRect.top &&
-        y < questionBoxRect.bottom);
+      y < navbarHeight || (x > 840 && x < 1200 && y > 190 && y < 372);
 
     if (!isCursorInDeadZone) {
-      context!.lineCap = "round";
-      context!.lineJoin = "round";
-      context!.lineWidth = eraser ? 20 : lineWidth;
-      context!.strokeStyle = eraser ? "#ffffff" : color;
+      // Get the bounding box of the question box
+      const questionBoxRect = questionBoxRef.current?.getBoundingClientRect();
 
-      if (drawing) {
-        context!.lineTo(x, y);
-        context!.stroke();
-        context!.beginPath();
-        context!.moveTo(x, y);
+      // Check if the cursor is within the question box
+      const isCursorInQuestionBox =
+        questionBoxRect &&
+        x >= questionBoxRect.left &&
+        x <= questionBoxRect.right &&
+        y >= questionBoxRect.top &&
+        y <= questionBoxRect.bottom;
+
+      if (!isCursorInQuestionBox) {
+        context!.lineCap = "round";
+        context!.lineJoin = "round";
+        context!.lineWidth = eraser ? 20 : lineWidth;
+        context!.strokeStyle = eraser ? "#ffffff" : color;
+
+        if (drawing) {
+          context!.lineTo(x, y);
+          context!.stroke();
+          context!.beginPath();
+          context!.moveTo(x, y);
+        }
       }
     }
   };
