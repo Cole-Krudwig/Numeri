@@ -74,7 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({
         className={`xl:hidden absolute inset-x-0 top-0 bg-custom-green-gray px-4 py-4
          ${
            isMenuOpen
-             ? "transform translate-y-0 mt-32 duration-500"
+             ? "transform translate-y-0 mt-28 duration-500"
              : "transform -translate-y-full duration-500"
          }`}
       >
