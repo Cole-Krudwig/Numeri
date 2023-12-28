@@ -38,8 +38,8 @@ const Subtraction: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center mt-16">
-      <div className="bg-gray-200 p-8 rounded shadow-md text-center">
+    <div className="flex items-center justify-center">
+      <div className="bg-custom-gray p-8 text-center w-screen h-48">
         <p className="text-2xl font-bold mb-4">
           {currentProblem.num1} - {currentProblem.num2} =
         </p>
@@ -52,7 +52,7 @@ const Subtraction: React.FC = () => {
           onKeyUp={handleKeyPress}
         />
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-custom-salmon text-white px-4 py-2 rounded"
           onClick={handleSubmit}
         >
           Submit

@@ -90,9 +90,12 @@ const DrawingBoard: React.FC = () => {
   }, []); // Run this effect only once when the component mounts
 
   const draw = (x: number, y: number): void => {
-    const navbarHeight = 60; // Set the height of your navbar
+    const navbarHeight = 375; // Set the height of your navbar
     const questionBoxWidth = 200; // Set the width of your question box
     const questionBoxHeight = 100; // Set the height of your question box
+
+    const canvasRect = canvasRef.current?.getBoundingClientRect();
+    if (!canvasRect) return;
 
     // Check if the cursor is within the dead zones (navbar or question box)
     const isCursorInDeadZone =
@@ -113,61 +116,80 @@ const DrawingBoard: React.FC = () => {
       if (!isCursorInQuestionBox) {
         context!.lineCap = "round";
         context!.lineJoin = "round";
-        context!.lineWidth = eraser ? 20 : lineWidth;
+        context!.lineWidth = eraser ? lineWidth + 10 : lineWidth;
         context!.strokeStyle = eraser ? "#ffffff" : color;
 
         if (drawing) {
-          context!.lineTo(x, y);
-          context!.stroke();
-          context!.beginPath();
-          context!.moveTo(x, y);
+          if (eraser) {
+            const eraserRadius = context!.lineWidth / 2;
+            context!.clearRect(
+              x - eraserRadius - canvasRect.left,
+              y - eraserRadius - canvasRect.top,
+              2 * eraserRadius,
+              2 * eraserRadius
+            );
+          } else {
+            context!.lineTo(x - canvasRect.left, y - canvasRect.top);
+            context!.stroke();
+            context!.beginPath();
+            context!.moveTo(x - canvasRect.left, y - canvasRect.top);
+          }
         }
       }
     }
   };
 
   return (
-    <div className="z-0">
-      <canvas
-        ref={canvasRef}
-        width={window.innerWidth}
-        height={window.innerHeight}
-        style={{ position: "fixed", top: 0, left: 0, touchAction: "none" }}
-      />
-      <div style={{ position: "absolute", top: "10px", left: "10px" }}>
-        <label>
-          Color:
-          <input
-            type="color"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-          />
-        </label>
-        <label>
-          Line Width:
-          <input
-            type="number"
-            value={lineWidth}
-            onChange={(e) => setLineWidth(Number(e.target.value))}
-          />
-        </label>
-        <label>
-          Eraser:
-          <input
-            type="checkbox"
-            checked={eraser}
-            onChange={(e) => setEraser(e.target.checked)}
-          />
-        </label>
-        <button
-          onClick={() =>
-            context?.clearRect(0, 0, window.innerWidth, window.innerHeight)
-          }
-        >
-          Clear Canvas
-        </button>
+    <>
+      <div className="">
+        <canvas
+          ref={canvasRef}
+          width={window.innerWidth}
+          height={window.innerHeight - 375}
+          style={{
+            position: "fixed",
+            top: "375px",
+            left: 0,
+            touchAction: "none",
+          }}
+        />
+        <div className="flex justify-center items-center bg-custom-gray w-screen h-16">
+          <div className="relative">
+            <label>
+              Color:
+              <input
+                type="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+              />
+            </label>
+            <label>
+              Line Width:
+              <input
+                type="number"
+                value={lineWidth}
+                onChange={(e) => setLineWidth(Number(e.target.value))}
+              />
+            </label>
+            <label>
+              Eraser:
+              <input
+                type="checkbox"
+                checked={eraser}
+                onChange={(e) => setEraser(e.target.checked)}
+              />
+            </label>
+            <button
+              onClick={() =>
+                context?.clearRect(0, 0, window.innerWidth, window.innerHeight)
+              }
+            >
+              Clear Canvas
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

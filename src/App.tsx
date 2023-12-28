@@ -39,14 +39,15 @@ const App: React.FC = () => {
   return (
     <>
       <div className="bg-graph-paper min-h-screen">
-        <div className="">
+        <div>
           <Navbar
             tabs={tabs}
             activeIndex={activeIndex}
             onTabClick={handleTabClick}
           />
           <MathProblemGenerator operation={tabs[activeIndex - 1].operation} />
-          <div className="mt-8"></div>
+
+          <DrawingBoard />
         </div>
       </div>
     </>
