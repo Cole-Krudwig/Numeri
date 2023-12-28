@@ -38,15 +38,22 @@ const App: React.FC = () => {
 
   return (
     <>
-      <div className="bg-graph-paper min-h-screen">
-        <Navbar
-          tabs={tabs}
-          activeIndex={activeIndex}
-          onTabClick={handleTabClick}
-        />
-        <MathProblemGenerator operation={tabs[activeIndex - 1].operation} />
+      <div
+        className="bg-graph-paper min-h-screen"
+        style={{ position: "relative" }}
+      >
+        <div className="z-50">
+          <MathProblemGenerator operation={tabs[activeIndex - 1].operation} />
+        </div>
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <Navbar
+            tabs={tabs}
+            activeIndex={activeIndex}
+            onTabClick={handleTabClick}
+          />
+        </div>
+        <DrawingBoard />
       </div>
-      <DrawingBoard />
     </>
   );
 };

@@ -127,16 +127,14 @@ const DrawingBoard: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="z-0">
       <canvas
         ref={canvasRef}
         width={window.innerWidth}
         height={window.innerHeight}
         style={{ position: "fixed", top: 0, left: 0, touchAction: "none" }}
       />
-      <div
-        style={{ position: "absolute", top: "10px", left: "10px", zIndex: 1 }}
-      >
+      <div style={{ position: "absolute", top: "10px", left: "10px" }}>
         <label>
           Color:
           <input

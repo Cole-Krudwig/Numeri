@@ -31,7 +31,7 @@ const MathProblemGenerator: React.FC<MathProblemGeneratorProps> = ({
     }
   };
 
-  return <div>{renderOperationComponent()}</div>;
+  return <div className="z-50">{renderOperationComponent()}</div>;
 };
 
 export default MathProblemGenerator;
