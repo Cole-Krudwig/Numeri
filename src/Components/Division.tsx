@@ -57,7 +57,7 @@ const Division: React.FC = () => {
         >
           Submit
         </button>
-        <p className="mt-4">{result}</p>
+        <p className="mt-4 font-bold">{result}</p>
       </div>
     </div>
   );
