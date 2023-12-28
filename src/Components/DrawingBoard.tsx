@@ -12,7 +12,7 @@ const DrawingBoard: React.FC = () => {
   const [drawing, setDrawing] = useState<boolean>(false);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   const [color, setColor] = useState<string>("#000000"); // Default color is black
-  const [lineWidth, setLineWidth] = useState<number>(2); // Default line width
+  const [lineWidth, setLineWidth] = useState<number>(10); // Default line width
   const [eraser, setEraser] = useState<boolean>(false);
 
   useEffect(() => {
@@ -90,7 +90,7 @@ const DrawingBoard: React.FC = () => {
   }, []); // Run this effect only once when the component mounts
 
   const draw = (x: number, y: number): void => {
-    const navbarHeight = 375; // Set the height of your navbar
+    const navbarHeight = 395; // Set the height of your navbar
     const questionBoxWidth = 200; // Set the width of your question box
     const questionBoxHeight = 100; // Set the height of your question box
 
@@ -141,52 +141,55 @@ const DrawingBoard: React.FC = () => {
 
   return (
     <>
-      <div className="">
-        <canvas
-          ref={canvasRef}
-          width={window.innerWidth}
-          height={window.innerHeight - 375}
-          style={{
-            position: "fixed",
-            top: "375px",
-            left: 0,
-            touchAction: "none",
-          }}
-        />
-        <div className="flex justify-center items-center bg-custom-gray w-screen h-16">
-          <div className="relative">
-            <label>
-              Color:
-              <input
-                type="color"
-                value={color}
-                onChange={(e) => setColor(e.target.value)}
-              />
-            </label>
-            <label>
-              Line Width:
-              <input
-                type="number"
-                value={lineWidth}
-                onChange={(e) => setLineWidth(Number(e.target.value))}
-              />
-            </label>
-            <label>
-              Eraser:
-              <input
-                type="checkbox"
-                checked={eraser}
-                onChange={(e) => setEraser(e.target.checked)}
-              />
-            </label>
-            <button
-              onClick={() =>
-                context?.clearRect(0, 0, window.innerWidth, window.innerHeight)
-              }
-            >
-              Clear Canvas
-            </button>
-          </div>
+      <canvas
+        ref={canvasRef}
+        width={window.innerWidth}
+        height={window.innerHeight - 375}
+        style={{
+          position: "fixed",
+          top: "375px",
+          left: 0,
+          touchAction: "none",
+        }}
+      />
+      <div className="flex justify-center bg-custom-gray w-screen h-16 font-bold text-white items-center">
+        <div className="">
+          <label className="text-black px-4">
+            Color: &nbsp;
+            <input
+              className="bg-custom-gray rounded align-middle"
+              type="color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
+          </label>
+          <label className="text-black px-4">
+            Line Width: &nbsp;
+            <input
+              type="number"
+              min={10}
+              max={100}
+              step={10}
+              value={lineWidth}
+              onChange={(e) => setLineWidth(Number(e.target.value))}
+            />
+          </label>
+          <label className="text-black px-4 align-middle">
+            Eraser: &nbsp;
+            <input
+              type="checkbox"
+              checked={eraser}
+              onChange={(e) => setEraser(e.target.checked)}
+            />
+          </label>
+          <button
+            className="px-4 bg-custom-salmon rounded text-white"
+            onClick={() =>
+              context?.clearRect(0, 0, window.innerWidth, window.innerHeight)
+            }
+          >
+            Clear Canvas
+          </button>
         </div>
       </div>
     </>
