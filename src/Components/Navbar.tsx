@@ -49,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Navigation Links - Shown on larger screens */}
-        <div className="hidden xl:flex items-center justify-end flex-1 space-x-16 text-white text-xl mr-16">
+        <div className="hidden xl:flex items-center justify-end flex-1 space-x-16 text-white text-xl font-bold mr-16">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -84,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({
             className={`block w-full py-4 text-white text-lg ${
               activeIndex === tab.id
                 ? "bg-custom-green-dark rounded-lg text-white"
-                : "hover:bg-gray-300 rounded-lg"
+                : "hover:bg-custom-gray hover:text-custom-green-dark rounded-lg"
             }`}
             onClick={() => {
               onTabClick(tab.id);

@@ -39,7 +39,7 @@ const Addition: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="bg-custom-gray p-8 shadow-md text-center w-screen">
+      <div className="bg-custom-gray p-8 shadow-md text-center w-screen h-48">
         <p className="text-2xl font-bold mb-4">
           {currentProblem.num1} + {currentProblem.num2} =
         </p>
