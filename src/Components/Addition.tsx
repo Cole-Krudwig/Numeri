@@ -1,9 +1,33 @@
 import React, { useState } from "react";
+import { useLanguage } from "./LanguageContext";
+
+// Define the type of languageWords
+type LanguageWords = {
+  [key: string]: {
+    submit: string;
+    // Add more words/phrases as needed
+  };
+};
+
+const languageWords = {
+  en: {
+    submit: "Submit",
+    // Add more words/phrases as needed
+  },
+  fr: {
+    submit: "Soumettre",
+  },
+  // Add more languages as needed
+};
 
 const Addition: React.FC = () => {
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
   const [userAnswer, setUserAnswer] = useState("");
   const [result, setResult] = useState("");
+
+  // Set Language
+  const { currentLanguage } = useLanguage();
+  const words = languageWords[currentLanguage as keyof typeof languageWords];
 
   // Function to generate a random addition problem
   function generateProblem() {
@@ -54,7 +78,7 @@ const Addition: React.FC = () => {
           className="bg-custom-salmon text-white px-4 py-2 rounded font-bold"
           onClick={handleSubmit}
         >
-          Submit
+          {words?.submit}
         </button>
         <p className="mt-4 font-bold">{result}</p>
       </div>
