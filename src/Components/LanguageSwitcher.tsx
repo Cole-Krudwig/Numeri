@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLanguage } from "./LanguageContext";
 
 const LanguageSwitcher: React.FC = () => {
   const { currentLanguage, updateLanguage } = useLanguage();
+
+  //useEffect(() => {
+  //console.log("Current Language: ", currentLanguage);
+  //});
 
   return (
     <select

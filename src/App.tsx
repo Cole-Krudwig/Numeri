@@ -3,6 +3,7 @@ import Navbar from "./Components/Navbar";
 import MathProblemGenerator from "./Components/MathProblemGenerator";
 import DrawingBoard from "./Components/DrawingBoard";
 import { LanguageProvider } from "./Components/LanguageContext";
+import { useLanguage } from "./Components/LanguageContext";
 
 interface Tab {
   id: number;
@@ -10,16 +11,31 @@ interface Tab {
   operation: "addition" | "subtraction" | "multiplication" | "division";
 }
 
-interface AdditionTextsType {
+const NavWords = {
   en: {
-    addition: string;
-  };
+    addition: "Addition",
+    subtraction: "Subtraction",
+    multiplication: "Multiplication",
+    division: "Division",
+  },
   fr: {
-    addition: string;
-  };
-}
+    addition: "Ajout",
+    subtraction: "Soustraction",
+    multiplication: "Multiplication",
+    division: "Division",
+  },
+  // Add more languages as needed
+};
 
 const App: React.FC = () => {
+  // Set Language
+  const { currentLanguage } = useLanguage();
+  const words = NavWords[currentLanguage as keyof typeof NavWords];
+
+  useEffect(() => {
+    console.log("Current Language: ", currentLanguage);
+  });
+
   // Load the active index from localStorage or set it to the default value
   const initialActiveIndex = parseInt(
     localStorage.getItem("activeIndex") || "1",
@@ -27,29 +43,18 @@ const App: React.FC = () => {
   );
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
 
-  // Set Language for "Addition" tab
-  const AdditionTexts: AdditionTextsType = {
-    en: {
-      addition: "Addition",
-    },
-    fr: {
-      addition: "Addition (French)",
-    },
-    // add more languages as needed
-  };
-
   const tabs: Tab[] = useMemo(
     () => [
       {
         id: 1,
-        title: "Addition",
+        title: words.addition,
         operation: "addition",
       },
-      { id: 2, title: "Subtraction", operation: "subtraction" },
-      { id: 3, title: "Multiplication", operation: "multiplication" },
-      { id: 4, title: "Division", operation: "division" },
+      { id: 2, title: words.subtraction, operation: "subtraction" },
+      { id: 3, title: words.multiplication, operation: "multiplication" },
+      { id: 4, title: words.division, operation: "division" },
     ],
-    [] // Empty dependency array, since the tabs array does not depend on any props or state
+    [currentLanguage] // Empty dependency array, since the tabs array does not depend on any props or state
   );
 
   const handleTabClick = (index: number) => {
@@ -63,20 +68,17 @@ const App: React.FC = () => {
 
   return (
     <>
-      <LanguageProvider>
-        <div className="bg-graph-paper min-h-screen">
-          <div>
-            <Navbar
-              tabs={tabs}
-              activeIndex={activeIndex}
-              onTabClick={handleTabClick}
-            />
-            <MathProblemGenerator operation={tabs[activeIndex - 1].operation} />
-
-            <DrawingBoard />
-          </div>
+      <div className="bg-graph-paper min-h-screen">
+        <div>
+          <Navbar
+            tabs={tabs}
+            activeIndex={activeIndex}
+            onTabClick={handleTabClick}
+          />
+          <MathProblemGenerator operation={tabs[activeIndex - 1].operation} />
+          <DrawingBoard />
         </div>
-      </LanguageProvider>
+      </div>
     </>
   );
 };
