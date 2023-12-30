@@ -52,7 +52,7 @@ const Division: React.FC = () => {
           onKeyUp={handleKeyPress}
         />
         <button
-          className="bg-custom-salmon text-white px-4 py-2 rounded"
+          className="bg-custom-salmon text-white px-4 py-2 rounded font-bold"
           onClick={handleSubmit}
         >
           Submit

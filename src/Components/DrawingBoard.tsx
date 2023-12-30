@@ -174,9 +174,10 @@ const DrawingBoard: React.FC = () => {
               onChange={(e) => setLineWidth(Number(e.target.value))}
             />
           </label>
-          <label className="text-black px-4 align-middle">
+          <label className="text-black px-4">
             Eraser: &nbsp;
             <input
+              className="align-middle"
               type="checkbox"
               checked={eraser}
               onChange={(e) => setEraser(e.target.checked)}
