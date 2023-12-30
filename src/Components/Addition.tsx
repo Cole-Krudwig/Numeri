@@ -1,33 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "./LanguageContext";
-
-// Define the type of languageWords
-type LanguageWords = {
-  [key: string]: {
-    submit: string;
-    // Add more words/phrases as needed
-  };
-};
-
-const languageWords = {
-  en: {
-    submit: "Submit",
-    // Add more words/phrases as needed
-  },
-  fr: {
-    submit: "Soumettre",
-  },
-  // Add more languages as needed
-};
+import MathOperationInput from "./QuestionSubmit";
 
 const Addition: React.FC = () => {
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
   const [userAnswer, setUserAnswer] = useState("");
   const [result, setResult] = useState("");
-
-  // Set Language
-  const { currentLanguage } = useLanguage();
-  const words = languageWords[currentLanguage as keyof typeof languageWords];
 
   // Function to generate a random addition problem
   function generateProblem() {
@@ -63,24 +41,17 @@ const Addition: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="bg-custom-gray p-8 text-center w-screen h-48">
-        <p className="text-2xl font-bold mb-4">
-          {currentProblem.num1} + {currentProblem.num2} =
+      <div className="flex justify-center bg-custom-gray p-8 text-center w-screen h-48">
+        <p className="text-2xl font-bold mb-4 mt-1">
+          {currentProblem.num1} + {currentProblem.num2} = &nbsp;
         </p>
-        <input
-          type="text"
-          className="border p-2 mr-2"
+        <MathOperationInput
           value={userAnswer}
-          onChange={(e) => setUserAnswer(e.target.value)}
+          onChange={setUserAnswer}
           onKeyUp={handleKeyPress}
+          onSubmit={handleSubmit}
+          result={result}
         />
-        <button
-          className="bg-custom-salmon text-white px-4 py-2 rounded font-bold"
-          onClick={handleSubmit}
-        >
-          {words?.submit}
-        </button>
-        <p className="mt-4 font-bold">{result}</p>
       </div>
     </div>
   );

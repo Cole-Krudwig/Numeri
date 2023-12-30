@@ -18,6 +18,12 @@ const NavWords = {
     multiplication: "Multiplication",
     division: "Division",
   },
+  es: {
+    addition: "Suma",
+    subtraction: "Resta",
+    multiplication: "Multiplicación",
+    division: "División",
+  },
   fr: {
     addition: "Ajout",
     subtraction: "Soustraction",

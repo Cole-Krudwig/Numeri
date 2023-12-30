@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Divide as Hamburger } from "hamburger-react";
-import LanguageSwitcher from "./LanguageSwitcher";
 
 interface Tab {
   id: number;
@@ -36,7 +35,6 @@ const Navbar: React.FC<NavbarProps> = ({
 
         <div className="flex items-center sm:ml-16">
           <img src="CalculatorLogo2.png" alt="" width={75} />
-          <LanguageSwitcher />
           <span className="hidden md:flex ml-16 text-white text-5xl">
             <div className="font-bold">Numeri</div>
           </span>

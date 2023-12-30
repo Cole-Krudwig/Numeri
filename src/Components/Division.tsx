@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import MathOperationInput from "./QuestionSubmit";
 
 const Division: React.FC = () => {
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
@@ -39,25 +40,17 @@ const Division: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="bg-custom-gray p-8 text-center w-screen h-48">
-        <p className="text-2xl font-bold mb-4">
-          {currentProblem.num1} ÷ {currentProblem.num2} =
+      <div className="flex justify-center bg-custom-gray p-8 text-center w-screen h-48">
+        <p className="text-2xl font-bold mb-4 mt-1">
+          {currentProblem.num1} ÷ {currentProblem.num2} = &nbsp;
         </p>
-        <input
-          id="SubtractionInput"
-          type="text"
-          className="border p-2 mr-2"
+        <MathOperationInput
           value={userAnswer}
-          onChange={(e) => setUserAnswer(e.target.value)}
+          onChange={setUserAnswer}
           onKeyUp={handleKeyPress}
+          onSubmit={handleSubmit}
+          result={result}
         />
-        <button
-          className="bg-custom-salmon text-white px-4 py-2 rounded font-bold"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
-        <p className="mt-4 font-bold">{result}</p>
       </div>
     </div>
   );
