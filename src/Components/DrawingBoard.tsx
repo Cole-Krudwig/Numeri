@@ -1,10 +1,46 @@
 // DrawingBoard.tsx
 import React, { useRef, useEffect, useState } from "react";
+import { useLanguage } from "./LanguageContext";
 
 interface Position {
   x: number;
   y: number;
 }
+
+// Define the type of languageWords
+type LanguageWords = {
+  [key: string]: {
+    clear: string;
+    color: string;
+    width: string;
+    eraser: string;
+    // Add more words/phrases as needed
+  };
+};
+
+const languageWords: LanguageWords = {
+  en: {
+    clear: "Clear Canvas",
+    color: "Color",
+    width: "Line Width",
+    eraser: "Eraser",
+    // Add more words/phrases as needed
+  },
+  es: {
+    clear: "Borrar Pontalla",
+    color: "Color",
+    width: "Ancho de Línea",
+    eraser: "Goma",
+  },
+  fr: {
+    clear: "Toile Transparente",
+    color: "Couleur",
+    width: "Largeur de Ligne",
+    eraser: "Gomme",
+  },
+
+  // Add more languages as needed
+};
 
 const DrawingBoard: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -14,6 +50,10 @@ const DrawingBoard: React.FC = () => {
   const [color, setColor] = useState<string>("#000000"); // Default color is black
   const [lineWidth, setLineWidth] = useState<number>(10); // Default line width
   const [eraser, setEraser] = useState<boolean>(false);
+
+  // Set Language
+  const { currentLanguage } = useLanguage();
+  const words = languageWords[currentLanguage as keyof typeof languageWords];
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -155,7 +195,7 @@ const DrawingBoard: React.FC = () => {
       <div className="flex justify-center bg-custom-gray w-screen h-16 font-bold text-white items-center">
         <div className="">
           <label className="text-black px-4">
-            Color: &nbsp;
+            {words?.color}: &nbsp;
             <input
               className="bg-custom-gray rounded align-middle"
               type="color"
@@ -164,7 +204,7 @@ const DrawingBoard: React.FC = () => {
             />
           </label>
           <label className="text-black px-4">
-            Line Width: &nbsp;
+            {words?.width}: &nbsp;
             <input
               type="number"
               min={10}
@@ -189,7 +229,7 @@ const DrawingBoard: React.FC = () => {
               context?.clearRect(0, 0, window.innerWidth, window.innerHeight)
             }
           >
-            Clear Canvas
+            {words?.clear}
           </button>
         </div>
       </div>
