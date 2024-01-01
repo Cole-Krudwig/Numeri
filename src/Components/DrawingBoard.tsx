@@ -215,7 +215,7 @@ const DrawingBoard: React.FC = () => {
             />
           </label>
           <label className="text-black px-4">
-            Eraser: &nbsp;
+            {words?.eraser}: &nbsp;
             <input
               className="align-middle"
               type="checkbox"

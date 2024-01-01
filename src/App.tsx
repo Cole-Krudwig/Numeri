@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Navbar from "./Components/Navbar";
 import MathProblemGenerator from "./Components/MathProblemGenerator";
 import DrawingBoard from "./Components/DrawingBoard";
-import { LanguageProvider } from "./Components/LanguageContext";
+// import { LanguageProvider } from "./Components/LanguageContext";
 import { useLanguage } from "./Components/LanguageContext";
 
 interface Tab {
