@@ -2,6 +2,7 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import { useLanguage } from "./LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
+import DifficultySwitcher from "./DifficultySwitcher";
 
 type LanguageWords = {
   [key: string]: {
@@ -88,6 +89,7 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
         </div>
         <div className="mt-2">
           <LanguageSwitcher />
+          <DifficultySwitcher />
         </div>
         <p className="mt-4 font-bold">
           {(result === 1 && words?.correct) ||

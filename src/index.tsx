@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { LanguageProvider } from "./Components/LanguageContext";
+import { DifficultyProvider } from "./Components/DifficultyContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,9 +12,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <>
     <LanguageProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <DifficultyProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </DifficultyProvider>
     </LanguageProvider>
   </>
 );

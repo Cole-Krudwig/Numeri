@@ -203,6 +203,7 @@ const DrawingBoard: React.FC = () => {
               onChange={(e) => setColor(e.target.value)}
             />
           </label>
+          {/*
           <label className="text-black px-4">
             {words?.width}: &nbsp;
             <input
@@ -213,7 +214,9 @@ const DrawingBoard: React.FC = () => {
               value={lineWidth}
               onChange={(e) => setLineWidth(Number(e.target.value))}
             />
+            
           </label>
+          */}
           <label className="text-black px-4">
             {words?.eraser}: &nbsp;
             <input

@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { useLanguage } from "./LanguageContext";
 import MathOperationInput from "./QuestionSubmit";
+import { useDifficulty } from "./DifficultyContext";
 
 const Addition: React.FC = () => {
+  const { currentLanguage } = useLanguage();
+  const { currentDifficulty, difficultyFactors } = useDifficulty(); // Include currentDifficulty in the destructuring
+
   // Function to generate a random addition problem
   const generateProblem = () => {
-    const num1 = Math.floor(Math.random() * 500);
-    const num2 = Math.floor(Math.random() * 500);
+    const num1 = Math.floor(
+      Math.random() * difficultyFactors[currentDifficulty]
+    );
+    const num2 = Math.floor(
+      Math.random() * difficultyFactors[currentDifficulty]
+    );
     console.log("Num1 (add):", num1);
     console.log("Num2 (add):", num2);
     return { num1, num2, answer: num1 + num2 };
