@@ -13,29 +13,8 @@ const Division: React.FC = () => {
     return { num1, num2, answer: num1 / num2 };
   }
 
-  // Function to check the answer
-  function checkAnswer() {
-    const parsedAnswer = parseInt(userAnswer, 10);
-
-    if (!isNaN(parsedAnswer) && parsedAnswer === currentProblem.answer) {
-      setResult("Correct! Well done!");
-      setCurrentProblem(generateProblem()); // Generate a new problem
-      setUserAnswer(""); // Clear the answer input
-    } else {
-      setResult("Incorrect. Try again.");
-    }
-  }
-
-  // Event handler for the submit button
-  const handleSubmit = () => {
-    checkAnswer();
-  };
-
-  // Event handler for the "Enter" key press
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      checkAnswer();
-    }
+  const handleCorrectAnswer = () => {
+    setCurrentProblem(generateProblem()); // Generate a new problem
   };
 
   return (
@@ -45,11 +24,8 @@ const Division: React.FC = () => {
           {currentProblem.num1} ÷ {currentProblem.num2} = &nbsp;
         </p>
         <MathOperationInput
-          value={userAnswer}
-          onChange={setUserAnswer}
-          onKeyUp={handleKeyPress}
-          onSubmit={handleSubmit}
-          result={result}
+          answer={currentProblem.answer}
+          onCorrectAnswer={handleCorrectAnswer}
         />
       </div>
     </div>

@@ -1,48 +1,72 @@
 // MathOperationInput.tsx
-import React, { ChangeEvent, KeyboardEvent } from "react";
+import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import { useLanguage } from "./LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-// Define the type of languageWords
 type LanguageWords = {
   [key: string]: {
     submit: string;
-    // Add more words/phrases as needed
+    correct: string;
+    incorrect: string;
   };
 };
 
 const languageWords: LanguageWords = {
   en: {
     submit: "Submit",
-    // Add more words/phrases as needed
+    correct: "Correct! Well done!",
+    incorrect: "Incorrect. Try again.",
   },
   es: {
     submit: "Enviar",
+    correct: "(ES) Correct! Well done!",
+    incorrect: "(ES) Incorrect. Try again.",
   },
   fr: {
     submit: "Soumettre",
+    correct: "(FR) Correct! Well done!",
+    incorrect: "(FR) Incorrect. Try again.",
   },
-
-  // Add more languages as needed
 };
 
 interface MathOperationInputProps {
-  value: string;
-  onChange: (value: string) => void;
-  onKeyUp: (event: KeyboardEvent<HTMLInputElement>) => void;
-  onSubmit: () => void;
-  result: string;
+  answer: number;
+  onCorrectAnswer: () => void;
 }
 
 const MathOperationInput: React.FC<MathOperationInputProps> = ({
-  value,
-  onChange,
-  onKeyUp,
-  onSubmit,
-  result,
+  answer,
+  onCorrectAnswer,
 }) => {
   const { currentLanguage } = useLanguage();
   const words = languageWords[currentLanguage as keyof typeof languageWords];
+  const [userAnswer, setUserAnswer] = useState("");
+  const [result, setResult] = useState(0);
+
+  const handleCheckAnswer = () => {
+    const parsedAnswer = parseInt(userAnswer, 10);
+
+    console.log("Parsed Answer:", parsedAnswer);
+    console.log("Current Problem Answer:", answer);
+
+    if (!isNaN(parsedAnswer) && parsedAnswer === answer) {
+      setResult(1);
+      setUserAnswer(""); // Clear the answer input
+      onCorrectAnswer(); // Trigger callback for correct answer
+    } else {
+      setResult(2);
+    }
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUserAnswer(e.target.value);
+  };
+
+  const handleKeyUp = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleCheckAnswer();
+    }
+  };
 
   return (
     <>
@@ -51,15 +75,13 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
           <input
             type="text"
             className="border p-2 mr-2"
-            value={value}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              onChange(e.target.value)
-            }
-            onKeyUp={onKeyUp}
+            value={userAnswer}
+            onChange={handleChange}
+            onKeyUp={handleKeyUp}
           />
           <button
             className="bg-custom-salmon text-white px-4 py-2 rounded font-bold"
-            onClick={onSubmit}
+            onClick={handleCheckAnswer}
           >
             {words?.submit}
           </button>
@@ -67,7 +89,10 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
         <div className="mt-2">
           <LanguageSwitcher />
         </div>
-        <p className="mt-4 font-bold">{result}</p>
+        <p className="mt-4 font-bold">
+          {(result === 1 && words?.correct) ||
+            (result === 2 && words?.incorrect)}
+        </p>
       </div>
     </>
   );

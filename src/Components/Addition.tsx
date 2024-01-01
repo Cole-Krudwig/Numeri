@@ -1,42 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useLanguage } from "./LanguageContext";
 import MathOperationInput from "./QuestionSubmit";
 
 const Addition: React.FC = () => {
-  const [currentProblem, setCurrentProblem] = useState(generateProblem());
-  const [userAnswer, setUserAnswer] = useState("");
-  const [result, setResult] = useState("");
-
   // Function to generate a random addition problem
-  function generateProblem() {
+  const generateProblem = () => {
     const num1 = Math.floor(Math.random() * 500);
     const num2 = Math.floor(Math.random() * 500);
+    console.log("Num1 (add):", num1);
+    console.log("Num2 (add):", num2);
     return { num1, num2, answer: num1 + num2 };
-  }
-
-  // Function to check the answer
-  function checkAnswer() {
-    const parsedAnswer = parseInt(userAnswer, 10);
-
-    if (!isNaN(parsedAnswer) && parsedAnswer === currentProblem.answer) {
-      setResult("Correct! Well done!");
-      setCurrentProblem(generateProblem()); // Generate a new problem
-      setUserAnswer(""); // Clear the answer input
-    } else {
-      setResult("Incorrect. Try again.");
-    }
-  }
-
-  // Event handler for the submit button
-  const handleSubmit = () => {
-    checkAnswer();
   };
 
-  // Event handler for the "Enter" key press
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      checkAnswer();
-    }
+  const [currentProblem, setCurrentProblem] = useState(generateProblem());
+
+  const handleCorrectAnswer = () => {
+    setCurrentProblem(generateProblem()); // Generate a new problem
   };
 
   return (
@@ -46,11 +25,8 @@ const Addition: React.FC = () => {
           {currentProblem.num1} + {currentProblem.num2} = &nbsp;
         </p>
         <MathOperationInput
-          value={userAnswer}
-          onChange={setUserAnswer}
-          onKeyUp={handleKeyPress}
-          onSubmit={handleSubmit}
-          result={result}
+          answer={currentProblem.answer}
+          onCorrectAnswer={handleCorrectAnswer}
         />
       </div>
     </div>
