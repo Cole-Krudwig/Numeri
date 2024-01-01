@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { useLanguage } from "./LanguageContext";
 import MathOperationInput from "./QuestionSubmit";
 import { useDifficulty } from "./DifficultyContext";
 
 const Addition: React.FC = () => {
-  const { currentLanguage } = useLanguage();
   const { currentDifficulty, difficultyFactors } = useDifficulty(); // Include currentDifficulty in the destructuring
 
   // Function to generate a random addition problem

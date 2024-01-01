@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import MathOperationInput from "./QuestionSubmit";
+import { useDifficulty } from "./DifficultyContext";
 
 const Multiplication: React.FC = () => {
-  const [currentProblem, setCurrentProblem] = useState(generateProblem());
-  const [userAnswer, setUserAnswer] = useState("");
-  const [result, setResult] = useState("");
+  const { currentDifficulty, difficultyFactors } = useDifficulty(); // Include currentDifficulty in the destructuring
 
   // Function to generate a random addition problem
   function generateProblem() {
-    const num1 = Math.floor(Math.random() * 16);
-    const num2 = Math.floor(Math.random() * 16);
+    const num1 = Math.floor(
+      Math.random() * (difficultyFactors[currentDifficulty] / 20)
+    );
+    const num2 = Math.floor(
+      Math.random() * (difficultyFactors[currentDifficulty] / 20)
+    );
     return { num1, num2, answer: num1 * num2 };
   }
+
+  const [currentProblem, setCurrentProblem] = useState(generateProblem());
 
   const handleCorrectAnswer = () => {
     setCurrentProblem(generateProblem()); // Generate a new problem
