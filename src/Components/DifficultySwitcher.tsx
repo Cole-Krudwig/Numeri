@@ -1,7 +1,9 @@
 import React from "react";
+// Internal Imports
 import { useDifficulty } from "./DifficultyContext";
 import { useLanguage } from "./LanguageContext";
 
+// Declare types and languages
 type LanguageWords = {
   [key: string]: {
     easy: string;
@@ -28,10 +30,12 @@ const languageWords: LanguageWords = {
   },
 };
 
+// Functional Component
 const DifficultySwitcher: React.FC = () => {
   const { currentDifficulty, updateDifficulty, difficultyFactors } =
     useDifficulty();
 
+  // Sets current language
   const { currentLanguage } = useLanguage();
   const words = languageWords[currentLanguage as keyof typeof languageWords];
 
