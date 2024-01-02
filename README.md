@@ -25,6 +25,12 @@ Numeri is a math practice problem app designed for young students to enhance the
 
 ## Installation
 
+### For local use to simply run the app:
+
+Download 'Numeri_Build' folder and open the index.html file in your web browser.
+
+### For installation
+
 Follow these steps to install Numeri on your local machine:
 
 ```bash
@@ -66,4 +72,4 @@ For any inquiries or feedback, feel free to contact me at ckrudwig@gmail.com.
 ## Acknowledgments
 
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
-- [Tailwind](https://tailwindcss.com/) - A utility-first CSS framework
+- [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework

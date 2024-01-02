@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "PUBLIC_URL=./ react-scripts build && postcss src/index.css -o build/static/css/index.css",
+    "build": "PUBLIC_URL=./ react-scripts build && postcss src/index.css -o build/static/css/index.css && mv build Numeri_Build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
