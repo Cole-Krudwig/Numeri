@@ -26,8 +26,8 @@ Numeri is a math practice problem app designed for young students to enhance the
 
 ## Requirements
 
- - "react": "^18.2.0"
- - "Node.js": "v20.10.0"
+- "react": "^18.2.0"
+- "Node.js": "v20.10.0"
 
 ## Installation
 
@@ -48,6 +48,7 @@ cd main-app
 # Install dependencies
 npm install
 ```
+
 Numeri can be used by opening the index.html file in the 'Numeri_Build' folder.
 
 ## Usage
@@ -75,4 +76,4 @@ For any inquiries or feedback, feel free to contact me at ckrudwig@gmail.com.
 ## Acknowledgments
 
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
-- [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework
+- [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework.
