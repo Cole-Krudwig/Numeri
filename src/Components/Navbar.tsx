@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 
+// Declare types
 interface Tab {
   id: number;
   title: string;
@@ -13,6 +14,7 @@ interface NavbarProps {
   onTabClick: (index: number) => void;
 }
 
+// Functional Component
 const Navbar: React.FC<NavbarProps> = ({
   tabs = [],
   activeIndex,

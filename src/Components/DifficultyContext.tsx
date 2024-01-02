@@ -14,6 +14,7 @@ const DifficultyContext = createContext<DifficultyContextValue | undefined>(
   undefined
 );
 
+// Functional Component
 export const DifficultyProvider: React.FC<DifficultyContextProps> = ({
   children,
 }) => {
