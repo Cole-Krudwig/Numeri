@@ -32,8 +32,7 @@ const languageWords: LanguageWords = {
 
 // Functional Component
 const DifficultySwitcher: React.FC = () => {
-  const { currentDifficulty, updateDifficulty, difficultyFactors } =
-    useDifficulty();
+  const { currentDifficulty, updateDifficulty } = useDifficulty();
 
   // Sets current language
   const { currentLanguage } = useLanguage();

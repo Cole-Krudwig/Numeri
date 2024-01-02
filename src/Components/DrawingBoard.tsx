@@ -131,8 +131,8 @@ const DrawingBoard: React.FC = () => {
 
   const draw = (x: number, y: number): void => {
     const navbarHeight = 395; // Set the height of your navbar
-    const questionBoxWidth = 200; // Set the width of your question box
-    const questionBoxHeight = 100; // Set the height of your question box
+    //const questionBoxWidth = 200; // Set the width of your question box
+    //const questionBoxHeight = 100; // Set the height of your question box
 
     const canvasRect = canvasRef.current?.getBoundingClientRect();
     if (!canvasRect) return;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 // Internal Imports
 import { useLanguage } from "./LanguageContext";
 
