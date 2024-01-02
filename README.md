@@ -1,4 +1,4 @@
-# Numeri &nbsp; <img src="main-app/public/icon.png" alt="Numeri Logo" width="30">
+# Numeri &nbsp; <img src="/public/icon.png" alt="Numeri Logo" width="30">
 
 Numeri is a math practice problem app designed for young students to enhance their math skills through interactive problem-solving. The app provides a unique feature allowing users to draw directly on the screen while working out math problems.
 
@@ -21,7 +21,7 @@ Numeri is a math practice problem app designed for young students to enhance the
 - **Eraser Tool:** Switch to an eraser to make corrections.
 - **Clear Screen:** Clear the entire screen with ease.
 
-<img src="main-app/public/NumeriBackground.png" alt="Numeri Homepage" width="500">
+<img src="/public/NumeriBackground.png" alt="Numeri Homepage" width="500">
 
 ## Installation
 
