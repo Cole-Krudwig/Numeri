@@ -30,7 +30,7 @@ const Division: React.FC = () => {
 
   return (
     <>
-      <div className="bg-custom-gray p-8 text-center w-screen h-40">
+      <div className="bg-custom-gray text-center w-screen h-40">
         <div className="flex justify-center">
           <MathOperationInput
             answer={currentProblem.answer}
