@@ -1,5 +1,4 @@
-# Numeri      &nbsp;    <img src="/public/icon.png" alt="Numeri Logo" width="30">
-
+# Numeri &nbsp; <img src="/public/icon.png" alt="Numeri Logo" width="30">
 
 Numeri is a math practice problem app designed for young students to enhance their math skills through interactive problem-solving. The app provides a unique feature allowing users to draw directly on the screen while working out math problems.
 
@@ -23,13 +22,15 @@ Numeri is a math practice problem app designed for young students to enhance the
 - **Eraser Tool:** Switch to an eraser to make corrections.
 - **Clear Screen:** Clear the entire screen with ease.
 
+<img src="/public/NumeriBackground.png" alt="Numeri Homepage" width="30">
+
 ## Installation
 
 Follow these steps to install Numeri on your local machine:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/numeri.git
+git clone https://github.com/Cole-Krudwig/Numeri.git
 
 # Navigate to the project directory
 cd numeri
