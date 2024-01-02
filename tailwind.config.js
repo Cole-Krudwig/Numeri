@@ -24,7 +24,7 @@ module.exports = {
         md: "768px",
         lg: "1024px",
         xl: "1200px",
-        "2xl": "1440px", // Custom extra-large breakpoint
+        xxl: "1440px", // Custom extra-large breakpoint
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
