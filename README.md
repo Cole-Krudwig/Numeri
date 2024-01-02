@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# Numeri
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Numeri is a math practice problem app designed for young students to enhance their math skills through interactive problem-solving. The app provides a unique feature allowing users to draw directly on the screen while working out math problems.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Acknowledgments](#acknowledgments)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Math Practice Modes:** Numeri supports addition, subtraction, multiplication, and division modes.
+- **Difficulty Levels:** Users can adjust the difficulty level via a dropdown menu.
+- **International Support:** The app is designed for international use, and users can choose their preferred language from a dropdown menu.
+- **Interactive Drawing:** Users can draw directly on the screen to solve math problems.
+- **Color Selection:** Choose your preferred drawing color.
+- **Eraser Tool:** Switch to an eraser to make corrections.
+- **Clear Screen:** Clear the entire screen with ease.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+Follow these steps to install Numeri on your local machine:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+# Clone the repository
+git clone https://github.com/your-username/numeri.git
 
-### `npm run build`
+# Navigate to the project directory
+cd numeri
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Install dependencies
+npm install
+```
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run Numeri on your local machine, use the following command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm start
+```
+Visit http://localhost:3000 in your web browser to access the app.
 
-### `npm run eject`
+## Contributing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+We welcome contributions from the community. If you'd like to contribute to Numeri, please follow our contribution guidelines.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Numeri is licensed under the MIT License.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Contact
 
-## Learn More
+For any inquiries or feedback, feel free to contact us at your-email@example.com.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acknowledgments
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
