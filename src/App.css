@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* Your custom styles below this line */
+/* Custom styles below this line */
 .panel {
   display: none;
 }
