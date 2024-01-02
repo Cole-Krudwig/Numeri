@@ -7,7 +7,6 @@ Numeri is a math practice problem app designed for young students to enhance the
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 - [Acknowledgments](#acknowledgments)
@@ -34,6 +33,7 @@ git clone https://github.com/Cole-Krudwig/Numeri.git
 
 # Navigate to the project directory
 cd numeri
+cd main-app
 
 # Install dependencies
 npm install
@@ -49,9 +49,7 @@ npm start
 
 Visit http://localhost:3000 in your web browser to access the app.
 
-## Contributing
-
-We welcome contributions from the community. If you'd like to contribute to Numeri, please follow our contribution guidelines.
+You can also open up index.html file within the build folder in your browser.
 
 ## License
 
