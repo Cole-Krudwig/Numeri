@@ -29,7 +29,7 @@ Numeri is a math practice problem app designed for young students to enhance the
 
 Download 'Numeri_Build' folder and open the index.html file in your web browser.
 
-### For installation
+### For installation:
 
 Follow these steps to install Numeri on your local machine:
 
