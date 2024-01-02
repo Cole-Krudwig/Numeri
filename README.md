@@ -49,7 +49,7 @@ npm start
 
 Visit http://localhost:3000 in your web browser to access the app.
 
-You can also open up index.html file within the build folder in your browser.
+You can also open up index.html file within the build folder in your browser. I have decided to include the build folder in the repository to allow use of Numeri without needing Node.js or online hosting.
 
 ## License
 
