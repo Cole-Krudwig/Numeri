@@ -1,4 +1,4 @@
-# Numeri
+# Numeri ![Numeric](main-app/public/icon.png)
 
 Numeri is a math practice problem app designed for young students to enhance their math skills through interactive problem-solving. The app provides a unique feature allowing users to draw directly on the screen while working out math problems.
 
@@ -36,6 +36,7 @@ cd numeri
 # Install dependencies
 npm install
 ```
+
 ## Usage
 
 To run Numeri on your local machine, use the following command:
@@ -43,6 +44,7 @@ To run Numeri on your local machine, use the following command:
 ```bash
 npm start
 ```
+
 Visit http://localhost:3000 in your web browser to access the app.
 
 ## Contributing
@@ -58,5 +60,3 @@ Numeri is licensed under the MIT License.
 For any inquiries or feedback, feel free to contact us at your-email@example.com.
 
 ## Acknowledgments
-
-
