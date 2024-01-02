@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MathOperationInput from "./QuestionSubmit";
 import { useDifficulty } from "./DifficultyContext";
 
@@ -8,8 +8,8 @@ interface AdditionProps {
   operation: MathOperation;
 }
 
-const Addition: React.FC<AdditionProps> = (operation) => {
-  const { currentDifficulty, difficultyFactors } = useDifficulty(); // Include currentDifficulty in the destructuring
+const Addition: React.FC<AdditionProps> = () => {
+  const { currentDifficulty, difficultyFactors } = useDifficulty();
 
   // Function to generate a random addition problem
   const generateProblem = () => {
@@ -29,6 +29,11 @@ const Addition: React.FC<AdditionProps> = (operation) => {
   const handleCorrectAnswer = () => {
     setCurrentProblem(generateProblem()); // Generate a new problem
   };
+
+  // Use useEffect to regenerate problems when difficulty changes
+  useEffect(() => {
+    setCurrentProblem(generateProblem());
+  }, [currentDifficulty, difficultyFactors]);
 
   return (
     <>
