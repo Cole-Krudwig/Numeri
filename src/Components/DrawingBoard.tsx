@@ -1,4 +1,5 @@
-// DrawingBoard.tsx
+// There is some unused code in this component to accomodate for potential future changes
+
 import React, { useRef, useEffect, useState } from "react";
 import { useLanguage } from "./LanguageContext";
 
@@ -18,6 +19,7 @@ type LanguageWords = {
   };
 };
 
+// Declare Language
 const languageWords: LanguageWords = {
   en: {
     clear: "Clear Canvas",
@@ -42,6 +44,7 @@ const languageWords: LanguageWords = {
   // Add more languages as needed
 };
 
+// Functional Component
 const DrawingBoard: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const questionBoxRef = useRef<HTMLDivElement | null>(null);
@@ -92,6 +95,7 @@ const DrawingBoard: React.FC = () => {
       draw(x, y);
     };
 
+    // Mouse events and touch events
     if (canvas) {
       canvas.addEventListener("mousedown", handleStart, { passive: false });
       canvas.addEventListener("mouseup", handleEnd, { passive: false });

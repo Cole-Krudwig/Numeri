@@ -13,6 +13,7 @@ const LanguageContext = createContext<LanguageContextValue | undefined>(
   undefined
 );
 
+// Functional Component
 export const LanguageProvider: React.FC<LanguageContextProps> = ({
   children,
 }) => {
