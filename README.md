@@ -67,7 +67,7 @@ You can also open up index.html file within the build folder in your browser. I 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Numeri is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Numeri is licensed under the MIT License - see the [LICENSE](main-app/LICENSE.md) file for details.
 
 ## Contact
 
