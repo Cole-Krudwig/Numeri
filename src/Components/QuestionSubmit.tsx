@@ -1,9 +1,10 @@
-// MathOperationInput.tsx
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
+// Internal Imports
 import { useLanguage } from "./LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 import DifficultySwitcher from "./DifficultySwitcher";
 
+// Declare types and languages
 type LanguageWords = {
   [key: string]: {
     submit: string;
@@ -38,6 +39,7 @@ interface MathOperationInputProps {
   operation: string;
 }
 
+// Functional Component
 const MathOperationInput: React.FC<MathOperationInputProps> = ({
   num1,
   num2,
@@ -45,17 +47,20 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
   onCorrectAnswer,
   operation,
 }) => {
+  // Sets language
   const { currentLanguage } = useLanguage();
   const words = languageWords[currentLanguage as keyof typeof languageWords];
+  // Sets user answer
   const [userAnswer, setUserAnswer] = useState("");
   const [result, setResult] = useState(0);
-
+  // Checks answer
   const handleCheckAnswer = () => {
     const parsedAnswer = parseInt(userAnswer, 10);
 
-    console.log("Parsed Answer:", parsedAnswer);
-    console.log("Current Problem Answer:", answer);
+    //console.log("Parsed Answer:", parsedAnswer);
+    //console.log("Current Problem Answer:", answer);
 
+    // Checks answer
     if (!isNaN(parsedAnswer) && parsedAnswer === answer) {
       setResult(1);
       setUserAnswer(""); // Clear the answer input
@@ -68,7 +73,7 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUserAnswer(e.target.value);
   };
-
+  // Allows for enter key
   const handleKeyUp = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       handleCheckAnswer();

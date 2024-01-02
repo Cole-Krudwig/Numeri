@@ -1,6 +1,5 @@
-// MathProblemGenerator.tsx
-
 import React from "react";
+// Internal Imports
 import Addition from "./Addition";
 import Subtraction from "./Subtraction";
 import Multiplication from "./Multiplication";
