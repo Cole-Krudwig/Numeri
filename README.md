@@ -21,7 +21,7 @@ Numeri is a math practice problem app designed for young students to enhance the
 - **Eraser Tool:** Switch to an eraser to make corrections.
 - **Clear Screen:** Clear the entire screen with ease.
 
-<img src="/public/NumeriBackground.png" alt="Numeri Homepage" width="30">
+<img src="/public/NumeriBackground.png" alt="Numeri Homepage" width="500">
 
 ## Installation
 
