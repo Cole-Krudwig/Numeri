@@ -9,7 +9,7 @@ interface DivisionProps {
 }
 
 // Functional Component
-const Division: React.FC = () => {
+const Division: React.FC<DivisionProps> = () => {
   const { currentDifficulty, difficultyFactors } = useDifficulty();
 
   // Function to generate a random division problem

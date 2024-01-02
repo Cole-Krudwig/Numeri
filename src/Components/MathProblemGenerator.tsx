@@ -23,9 +23,9 @@ const MathProblemGenerator: React.FC<MathProblemGeneratorProps> = ({
       case "subtraction":
         return <Subtraction operation={operation} />;
       case "multiplication":
-        return <Multiplication />;
+        return <Multiplication operation={operation} />;
       case "division":
-        return <Division />;
+        return <Division operation={operation} />;
       default:
         return null;
     }
