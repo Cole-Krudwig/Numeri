@@ -19,9 +19,9 @@ const MathProblemGenerator: React.FC<MathProblemGeneratorProps> = ({
   const renderOperationComponent = () => {
     switch (operation) {
       case "addition":
-        return <Addition />;
+        return <Addition operation={operation} />;
       case "subtraction":
-        return <Subtraction />;
+        return <Subtraction operation={operation} />;
       case "multiplication":
         return <Multiplication />;
       case "division":

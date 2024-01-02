@@ -17,10 +17,14 @@ const DifficultyContext = createContext<DifficultyContextValue | undefined>(
 export const DifficultyProvider: React.FC<DifficultyContextProps> = ({
   children,
 }) => {
-  const [currentDifficulty, setCurrentDifficulty] = useState("easy");
+  const storedDifficulty = localStorage.getItem("currentDifficulty");
+  const initialDifficulty = storedDifficulty || "easy"; // Use "easy" as the default if not stored
+
+  const [currentDifficulty, setCurrentDifficulty] = useState(initialDifficulty);
 
   const updateDifficulty = (newDifficulty: string) => {
     setCurrentDifficulty(newDifficulty);
+    localStorage.setItem("currentDifficulty", newDifficulty);
   };
 
   const difficultyFactors = {

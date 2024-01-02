@@ -24,17 +24,19 @@ const Division: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="flex justify-center bg-custom-gray p-8 text-center w-screen h-48">
-        <p className="text-2xl font-bold mb-4 mt-1">
-          {currentProblem.num1} ÷ {currentProblem.num2} = &nbsp;
-        </p>
-        <MathOperationInput
-          answer={currentProblem.answer}
-          onCorrectAnswer={handleCorrectAnswer}
-        />
+    <>
+      <div className="bg-custom-gray p-8 text-center w-screen h-48">
+        <div className="flex justify-center">
+          <MathOperationInput
+            answer={currentProblem.answer}
+            onCorrectAnswer={handleCorrectAnswer}
+            num1={currentProblem.num1}
+            num2={currentProblem.num2}
+            operation="division"
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

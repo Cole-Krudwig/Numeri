@@ -16,10 +16,14 @@ const LanguageContext = createContext<LanguageContextValue | undefined>(
 export const LanguageProvider: React.FC<LanguageContextProps> = ({
   children,
 }) => {
-  const [currentLanguage, setCurrentLanguage] = useState("en");
+  const storedLanguage = localStorage.getItem("currentLanguage");
+  const initialLanguage = storedLanguage || "en"; // Use "en" as the default if not stored
+
+  const [currentLanguage, setCurrentLanguage] = useState(initialLanguage);
 
   const updateLanguage = (newLanguage: string) => {
     setCurrentLanguage(newLanguage);
+    localStorage.setItem("currentLanguage", newLanguage);
   };
 
   const value: LanguageContextValue = {

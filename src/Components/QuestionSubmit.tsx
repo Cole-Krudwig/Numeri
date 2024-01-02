@@ -31,13 +31,19 @@ const languageWords: LanguageWords = {
 };
 
 interface MathOperationInputProps {
+  num1: number;
+  num2: number;
   answer: number;
   onCorrectAnswer: () => void;
+  operation: string;
 }
 
 const MathOperationInput: React.FC<MathOperationInputProps> = ({
+  num1,
+  num2,
   answer,
   onCorrectAnswer,
+  operation,
 }) => {
   const { currentLanguage } = useLanguage();
   const words = languageWords[currentLanguage as keyof typeof languageWords];
@@ -71,25 +77,38 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
 
   return (
     <>
-      <div>
+      <div className="bg-custom-gray p-8 text-center w-screen h-48">
         <div className="flex justify-center">
-          <input
-            type="text"
-            className="border p-2 mr-2"
-            value={userAnswer}
-            onChange={handleChange}
-            onKeyUp={handleKeyUp}
-          />
-          <button
-            className="bg-custom-salmon text-white px-4 py-2 rounded font-bold"
-            onClick={handleCheckAnswer}
-          >
-            {words?.submit}
-          </button>
-        </div>
-        <div className="mt-2">
-          <LanguageSwitcher />
-          <DifficultySwitcher />
+          <p className="text-2xl font-bold mb-4 mt-1">
+            {num1}{" "}
+            {operation === "addition"
+              ? "+"
+              : operation === "subtraction"
+              ? "-"
+              : operation === "multiplication"
+              ? "x"
+              : operation === "division"
+              ? "÷"
+              : ""}{" "}
+            {num2} = &nbsp;
+          </p>
+          <div>
+            <div className="flex">
+              <input
+                type="text"
+                className="border p-2 mr-2"
+                value={userAnswer}
+                onChange={handleChange}
+                onKeyUp={handleKeyUp}
+              />
+              <button
+                className="bg-custom-salmon text-white px-4 py-2 rounded font-bold"
+                onClick={handleCheckAnswer}
+              >
+                {words?.submit}
+              </button>
+            </div>
+          </div>
         </div>
         <p className="mt-4 font-bold">
           {(result === 1 && words?.correct) ||

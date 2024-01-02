@@ -156,7 +156,7 @@ const DrawingBoard: React.FC = () => {
       if (!isCursorInQuestionBox) {
         context!.lineCap = "round";
         context!.lineJoin = "round";
-        context!.lineWidth = eraser ? lineWidth + 10 : lineWidth;
+        context!.lineWidth = eraser ? lineWidth + 20 : lineWidth;
         context!.strokeStyle = eraser ? "#ffffff" : color;
 
         if (drawing) {
