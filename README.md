@@ -1,4 +1,5 @@
-# Numeri ![Numeric](main-app/public/icon.png)
+# Numeri      &nbsp;    <img src="/public/icon.png" alt="Numeri Logo" width="30">
+
 
 Numeri is a math practice problem app designed for young students to enhance their math skills through interactive problem-solving. The app provides a unique feature allowing users to draw directly on the screen while working out math problems.
 
