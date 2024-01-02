@@ -1,4 +1,4 @@
-# Numeri &nbsp; <img src="/public/icon.png" alt="Numeri Logo" width="30">
+# Numeri &nbsp; <img src="main-app/public/icon.png" alt="Numeri Logo" width="30">
 
 Numeri is a math practice problem app designed for young students to enhance their math skills through interactive problem-solving. The app provides a unique feature allowing users to draw directly on the screen while working out math problems.
 
@@ -21,7 +21,7 @@ Numeri is a math practice problem app designed for young students to enhance the
 - **Eraser Tool:** Switch to an eraser to make corrections.
 - **Clear Screen:** Clear the entire screen with ease.
 
-<img src="/public/NumeriBackground.png" alt="Numeri Homepage" width="500">
+<img src="main-app/public/NumeriBackground.png" alt="Numeri Homepage" width="500">
 
 ## Installation
 
@@ -33,6 +33,8 @@ git clone https://github.com/Cole-Krudwig/Numeri.git
 
 # Navigate to the project directory
 cd numeri
+
+# Then to the main application directory
 cd main-app
 
 # Install dependencies
@@ -53,10 +55,15 @@ You can also open up index.html file within the build folder in your browser. I 
 
 ## License
 
-Numeri is licensed under the MIT License.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+Numeri is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
-For any inquiries or feedback, feel free to contact us at your-email@example.com.
+For any inquiries or feedback, feel free to contact me at ckrudwig@gmail.com.
 
 ## Acknowledgments
+
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
+- [Tailwind](https://tailwindcss.com/) - A utility-first CSS framework
