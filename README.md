@@ -5,6 +5,7 @@ Numeri is a math practice problem app designed for young students to enhance the
 ## Table of Contents
 
 - [Features](#features)
+- [Requirement](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
@@ -23,13 +24,14 @@ Numeri is a math practice problem app designed for young students to enhance the
 
 <img src="/public/NumeriBackground.png" alt="Numeri Homepage" width="500">
 
+## Requirements
+
+ - "react": "^18.2.0"
+ - "Node.js": "v20.10.0"
+
 ## Installation
 
-### For local use to simply run the app:
-
-Download 'Numeri_Build' folder and open the index.html file in your web browser.
-
-### For installation:
+For installation:
 
 Follow these steps to install Numeri on your local machine:
 
@@ -46,6 +48,7 @@ cd main-app
 # Install dependencies
 npm install
 ```
+Numeri can be used by opening the index.html file in the 'Numeri_Build' folder.
 
 ## Usage
 
