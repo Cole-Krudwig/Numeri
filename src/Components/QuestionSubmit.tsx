@@ -20,13 +20,13 @@ const languageWords: LanguageWords = {
   },
   es: {
     submit: "Enviar",
-    correct: "(ES) Correct! Well done!",
-    incorrect: "(ES) Incorrect. Try again.",
+    correct: "Correcto. buen trabajo.",
+    incorrect: "Incorrecto. Intentar otra vez.",
   },
   fr: {
     submit: "Soumettre",
-    correct: "(FR) Correct! Well done!",
-    incorrect: "(FR) Incorrect. Try again.",
+    correct: "Correct. Bien joué.",
+    incorrect: "Incorrect. Essayer à nouveau.",
   },
 };
 
