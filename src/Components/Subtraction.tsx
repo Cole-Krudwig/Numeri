@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
+// Internal Imports
 import MathOperationInput from "./QuestionSubmit";
 import { useDifficulty } from "./DifficultyContext";
 
-type MathOperation = "addition" | "subtraction" | "multiplication" | "division";
-
+// Declare types
 interface SubtractionProps {
-  operation: MathOperation;
+  operation: string;
 }
 
+// Functional Component
 const Subtraction: React.FC<SubtractionProps> = () => {
   const { currentDifficulty, difficultyFactors } = useDifficulty();
 
@@ -24,8 +25,9 @@ const Subtraction: React.FC<SubtractionProps> = () => {
 
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
 
+  // Generate a new problem
   const handleCorrectAnswer = () => {
-    setCurrentProblem(generateProblem()); // Generate a new problem
+    setCurrentProblem(generateProblem());
   };
 
   // Use useEffect to regenerate problems when difficulty changes

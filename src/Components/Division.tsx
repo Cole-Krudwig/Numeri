@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
+// Internal Imports
 import MathOperationInput from "./QuestionSubmit";
 import { useDifficulty } from "./DifficultyContext";
 
+// Declare types
+interface DivisionProps {
+  operation: string;
+}
+
+// Functional Component
 const Division: React.FC = () => {
   const { currentDifficulty, difficultyFactors } = useDifficulty();
 
@@ -19,8 +26,9 @@ const Division: React.FC = () => {
 
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
 
+  // Generate a new problem
   const handleCorrectAnswer = () => {
-    setCurrentProblem(generateProblem()); // Generate a new problem
+    setCurrentProblem(generateProblem());
   };
 
   // Use useEffect to regenerate problems when difficulty changes

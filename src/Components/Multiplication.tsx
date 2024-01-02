@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
+// Internal Imports
 import MathOperationInput from "./QuestionSubmit";
 import { useDifficulty } from "./DifficultyContext";
 
-const Multiplication: React.FC = () => {
+// Declare types
+interface MultiplicationProps {
+  operation: string;
+}
+
+// Functional Component
+const Multiplication: React.FC<MultiplicationProps> = () => {
   const { currentDifficulty, difficultyFactors } = useDifficulty();
 
   // Function to generate a random multiplication problem
@@ -18,8 +25,9 @@ const Multiplication: React.FC = () => {
 
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
 
+  // Generate a new problem
   const handleCorrectAnswer = () => {
-    setCurrentProblem(generateProblem()); // Generate a new problem
+    setCurrentProblem(generateProblem());
   };
 
   // Use useEffect to regenerate problems when difficulty changes
