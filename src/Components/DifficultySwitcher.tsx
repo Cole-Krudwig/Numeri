@@ -44,7 +44,7 @@ const languageWords: LanguageWords = {
   es: {
     easy: "Fácil",
     medium: "Media",
-    hard: "Difícl",
+    hard: "Difícil",
   },
   fr: {
     easy: "Facile",
