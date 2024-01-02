@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { useLanguage } from "./Components/LanguageContext";
+// Internal Imports
 import Navbar from "./Components/Navbar";
 import MathProblemGenerator from "./Components/MathProblemGenerator";
 import DrawingBoard from "./Components/DrawingBoard";
-// import { LanguageProvider } from "./Components/LanguageContext";
-import { useLanguage } from "./Components/LanguageContext";
 
+// Declare types and translations
 interface Tab {
   id: number;
   title: string;
@@ -33,6 +34,7 @@ const NavWords = {
   // Add more languages as needed
 };
 
+// Functional Component
 const App: React.FC = () => {
   // Set Language
   const { currentLanguage } = useLanguage();
@@ -60,14 +62,16 @@ const App: React.FC = () => {
       { id: 3, title: words.multiplication, operation: "multiplication" },
       { id: 4, title: words.division, operation: "division" },
     ],
-    [currentLanguage] // Empty dependency array, since the tabs array does not depend on any props or state
+    [currentLanguage]
   );
 
+  // Saves active index to localStorage
   const handleTabClick = (index: number) => {
     setActiveIndex(index);
-    localStorage.setItem("activeIndex", index.toString()); // Save the active index to localStorage
+    localStorage.setItem("activeIndex", index.toString());
   };
 
+  // Sets document title
   useEffect(() => {
     document.title = `Numeri - ${tabs[activeIndex - 1].title}`;
   }, [activeIndex, tabs]);
