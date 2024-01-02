@@ -77,9 +77,9 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
 
   return (
     <>
-      <div className="bg-custom-gray p-8 text-center w-screen h-48">
-        <div className="flex justify-center">
-          <p className="text-2xl font-bold mb-4 mt-1">
+      <div className="bg-custom-gray p-4 text-center w-screen h-40">
+        <div className="xs:flex justify-center">
+          <p className="text-2xl font-bold mb-2 mt-1">
             {num1}{" "}
             {operation === "addition"
               ? "+"
@@ -93,7 +93,7 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
             {num2} = &nbsp;
           </p>
           <div>
-            <div className="flex">
+            <div className="flex justify-center mb-4">
               <input
                 type="text"
                 className="border p-2 mr-2"
@@ -110,7 +110,11 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
             </div>
           </div>
         </div>
-        <p className="mt-4 font-bold">
+        <div className="space-x-4">
+          <LanguageSwitcher />
+          <DifficultySwitcher />
+        </div>
+        <p className="mt-2 mb-2 xs:mt-6 font-bold">
           {(result === 1 && words?.correct) ||
             (result === 2 && words?.incorrect)}
         </p>

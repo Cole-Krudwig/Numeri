@@ -32,7 +32,7 @@ const Addition: React.FC<AdditionProps> = (operation) => {
 
   return (
     <>
-      <div className="bg-custom-gray p-8 text-center w-screen h-48">
+      <div className="bg-custom-gray text-center w-screen h-40">
         <div className="flex justify-center">
           <MathOperationInput
             answer={currentProblem.answer}

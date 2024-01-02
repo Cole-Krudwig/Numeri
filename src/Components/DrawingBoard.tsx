@@ -192,17 +192,19 @@ const DrawingBoard: React.FC = () => {
           touchAction: "none",
         }}
       />
-      <div className="flex justify-center bg-custom-gray w-screen h-16 font-bold text-white items-center">
-        <div className="">
-          <label className="text-black px-4">
-            {words?.color}: &nbsp;
-            <input
-              className="bg-custom-gray rounded align-middle"
-              type="color"
-              value={color}
-              onChange={(e) => setColor(e.target.value)}
-            />
-          </label>
+      <div className="h-24 flex justify-center bg-custom-gray w-screen font-bold text-white items-center">
+        <div className="xxs:flex mt-2">
+          <div>
+            <label className="text-black px-4">
+              {words?.color}: &nbsp;
+              <input
+                className="bg-custom-gray rounded align-middle"
+                type="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+              />
+            </label>
+          </div>
           {/*
           <label className="text-black px-4">
             {words?.width}: &nbsp;
@@ -217,23 +219,27 @@ const DrawingBoard: React.FC = () => {
             
           </label>
           */}
-          <label className="text-black px-4">
-            {words?.eraser}: &nbsp;
-            <input
-              className="align-middle"
-              type="checkbox"
-              checked={eraser}
-              onChange={(e) => setEraser(e.target.checked)}
-            />
-          </label>
-          <button
-            className="px-4 bg-custom-salmon rounded text-white"
-            onClick={() =>
-              context?.clearRect(0, 0, window.innerWidth, window.innerHeight)
-            }
-          >
-            {words?.clear}
-          </button>
+          <div>
+            <label className="text-black px-4">
+              {words?.eraser}: &nbsp;
+              <input
+                className="align-middle"
+                type="checkbox"
+                checked={eraser}
+                onChange={(e) => setEraser(e.target.checked)}
+              />
+            </label>
+          </div>
+          <div>
+            <button
+              className="px-4 bg-custom-salmon rounded text-white"
+              onClick={() =>
+                context?.clearRect(0, 0, window.innerWidth, window.innerHeight)
+              }
+            >
+              {words?.clear}
+            </button>
+          </div>
         </div>
       </div>
     </>

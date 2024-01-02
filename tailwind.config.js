@@ -18,7 +18,8 @@ module.exports = {
           "repeating-linear-gradient(0deg, #ccc, #ccc 1px, transparent 3px, transparent 30px), repeating-linear-gradient(90deg, #ccc, #ccc 1px, transparent 3px, transparent 30px)",
       },
       screens: {
-        xs: "375px", // Custom extra-small breakpoint
+        xxs: "400px",
+        xs: "540px", // Custom extra-small breakpoint
         sm: "640px",
         md: "768px",
         lg: "1024px",
