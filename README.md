@@ -42,9 +42,6 @@ git clone https://github.com/Cole-Krudwig/Numeri.git
 # Navigate to the project directory
 cd numeri
 
-# Then to the main application directory
-cd main-app
-
 # Install dependencies
 npm install
 ```
