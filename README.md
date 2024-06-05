@@ -5,7 +5,7 @@ Numeri is a math practice problem app designed for young students to enhance the
 ## Table of Contents
 
 - [Features](#features)
-- [Requirement](#requirements)
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
