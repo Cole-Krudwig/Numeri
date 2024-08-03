@@ -504,9 +504,6 @@ video {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
-.mb-4 {
-  margin-bottom: 1rem;
-}
 .ml-16 {
   margin-left: 4rem;
 }
@@ -716,6 +713,10 @@ body {
   }
 }
 @media (min-width: 540px) {
+
+  .xs\:mb-6 {
+    margin-bottom: 1.5rem;
+  }
 
   .xs\:mt-6 {
     margin-top: 1.5rem;
