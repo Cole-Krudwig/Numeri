@@ -31,49 +31,83 @@ interface AdditionProps {
   operation: string;
 }
 
+// Helper function to round numbers to a fixed number of decimal places
+const roundToDecimalPlaces = (number: number, places: number) => {
+  return Number(number.toFixed(places));
+};
+
 // Functional Component
 const Addition: React.FC<AdditionProps> = () => {
   const { currentDifficulty, difficultyFactors } = useDifficulty();
 
+  // Retrieve saved states from localStorage
+  const savedIncludeNegative = JSON.parse(
+    localStorage.getItem("includeNegative") || "false"
+  );
+  const savedIncludeDecimals = JSON.parse(
+    localStorage.getItem("includeDecimals") || "false"
+  );
+
+  // State for checkboxes
+  const [includeNegative, setIncludeNegative] = useState(savedIncludeNegative);
+  const [includeDecimals, setIncludeDecimals] = useState(savedIncludeDecimals);
+
   // Function to generate a random addition problem
   const generateProblem = () => {
-    const num1 = Math.floor(
-      Math.random() * difficultyFactors[currentDifficulty]
-    );
-    const num2 = Math.floor(
-      Math.random() * difficultyFactors[currentDifficulty]
-    );
-    console.log("Num1 (add):", num1);
-    console.log("Num2 (add):", num2);
+    const maxNum = difficultyFactors[currentDifficulty];
+    let num1: number;
+    let num2: number;
+
+    if (includeDecimals) {
+      num1 = roundToDecimalPlaces(Math.random() * maxNum, 3);
+      num2 = roundToDecimalPlaces(Math.random() * maxNum, 3);
+    } else {
+      num1 = Math.floor(Math.random() * maxNum);
+      num2 = Math.floor(Math.random() * maxNum);
+    }
+
+    if (includeNegative) {
+      num1 = num1 * (Math.random() < 0.5 ? -1 : 1);
+      num2 = num2 * (Math.random() < 0.5 ? -1 : 1);
+    }
+
     return { num1, num2, answer: num1 + num2 };
   };
 
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
+
+  // Save states to localStorage when they change
+  useEffect(() => {
+    localStorage.setItem("includeNegative", JSON.stringify(includeNegative));
+    localStorage.setItem("includeDecimals", JSON.stringify(includeDecimals));
+  }, [includeNegative, includeDecimals]);
 
   // Generate a new problem
   const handleCorrectAnswer = () => {
     setCurrentProblem(generateProblem());
   };
 
-  // Use useEffect to regenerate problems when difficulty changes
+  // Use useEffect to regenerate problems when difficulty or checkbox states change
   useEffect(() => {
     setCurrentProblem(generateProblem());
-  }, [currentDifficulty, difficultyFactors]);
+  }, [currentDifficulty, difficultyFactors, includeNegative, includeDecimals]);
 
   return (
-    <>
-      <div className="bg-custom-gray text-center w-screen h-40">
-        <div className="flex justify-center">
-          <MathOperationInput
-            answer={currentProblem.answer}
-            onCorrectAnswer={handleCorrectAnswer}
-            num1={currentProblem.num1}
-            num2={currentProblem.num2}
-            operation="addition"
-          />
-        </div>
+    <div className="bg-custom-gray text-center w-screen h-40">
+      <div className="flex justify-center">
+        <MathOperationInput
+          answer={currentProblem.answer}
+          onCorrectAnswer={handleCorrectAnswer}
+          num1={currentProblem.num1}
+          num2={currentProblem.num2}
+          operation="addition"
+          includeNegative={includeNegative}
+          setIncludeNegative={setIncludeNegative}
+          includeDecimals={includeDecimals}
+          setIncludeDecimals={setIncludeDecimals}
+        />
       </div>
-    </>
+    </div>
   );
 };
 

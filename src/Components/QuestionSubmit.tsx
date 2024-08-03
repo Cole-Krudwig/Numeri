@@ -26,6 +26,8 @@ import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import { useLanguage } from "./LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 import DifficultySwitcher from "./DifficultySwitcher";
+import NegativeNumbersCheckbox from "./NegativeNumbersCheckbox";
+import DecimalsCheckbox from "./DecimalsCheckbox";
 
 // Declare types and languages
 type LanguageWords = {
@@ -39,17 +41,17 @@ type LanguageWords = {
 const languageWords: LanguageWords = {
   en: {
     submit: "Submit",
-    correct: "Correct! Well done!",
+    correct: "Correct! Try another problem!",
     incorrect: "Incorrect. Try again.",
   },
   es: {
     submit: "Enviar",
-    correct: "Correcto. buen trabajo.",
+    correct: "¡Correcto! ¡Intenta con otro problema!",
     incorrect: "Incorrecto. Intentar otra vez.",
   },
   fr: {
     submit: "Soumettre",
-    correct: "Correct. Bien joué.",
+    correct: "Correct ! Essayez un autre problème !",
     incorrect: "Incorrect. Essayer à nouveau.",
   },
 };
@@ -60,6 +62,10 @@ interface MathOperationInputProps {
   answer: number;
   onCorrectAnswer: () => void;
   operation: string;
+  includeNegative: boolean;
+  setIncludeNegative: (checked: boolean) => void;
+  includeDecimals: boolean;
+  setIncludeDecimals: (checked: boolean) => void;
 }
 
 // Functional Component
@@ -69,6 +75,10 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
   answer,
   onCorrectAnswer,
   operation,
+  includeNegative,
+  setIncludeNegative,
+  includeDecimals,
+  setIncludeDecimals,
 }) => {
   // Sets language
   const { currentLanguage } = useLanguage();
@@ -78,10 +88,7 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
   const [result, setResult] = useState(0);
   // Checks answer
   const handleCheckAnswer = () => {
-    const parsedAnswer = parseInt(userAnswer, 10);
-
-    //console.log("Parsed Answer:", parsedAnswer);
-    //console.log("Current Problem Answer:", answer);
+    const parsedAnswer = parseFloat(userAnswer);
 
     // Checks answer
     if (!isNaN(parsedAnswer) && parsedAnswer === answer) {
@@ -106,6 +113,18 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
   return (
     <>
       <div className="bg-custom-gray p-4 text-center w-screen h-40">
+        <div className="space-x-4 mb-2 xs:mb-6">
+          <LanguageSwitcher />
+          <DifficultySwitcher />
+          <NegativeNumbersCheckbox
+            checked={includeNegative}
+            onChange={setIncludeNegative}
+          />
+          <DecimalsCheckbox
+            checked={includeDecimals}
+            onChange={setIncludeDecimals}
+          />
+        </div>
         <div className="xs:flex justify-center">
           <p className="text-2xl font-bold mb-2 mt-1">
             {num1}{" "}
@@ -121,7 +140,7 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
             {num2} = &nbsp;
           </p>
           <div>
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center">
               <input
                 type="text"
                 className="border p-2 mr-2"
@@ -138,10 +157,7 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
             </div>
           </div>
         </div>
-        <div className="space-x-4">
-          <LanguageSwitcher />
-          <DifficultySwitcher />
-        </div>
+
         <p className="mt-2 mb-2 xs:mt-6 font-bold">
           {(result === 1 && words?.correct) ||
             (result === 2 && words?.incorrect)}

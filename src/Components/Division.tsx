@@ -31,33 +31,80 @@ interface DivisionProps {
   operation: string;
 }
 
+// Helper function to round numbers to a fixed number of decimal places
+const roundToDecimalPlaces = (number: number, places: number) => {
+  return Number(number.toFixed(places));
+};
+
 // Functional Component
 const Division: React.FC<DivisionProps> = () => {
   const { currentDifficulty, difficultyFactors } = useDifficulty();
 
+  // Retrieve saved states from localStorage
+  const savedIncludeNegative = JSON.parse(
+    localStorage.getItem("includeNegative") || "false"
+  );
+  const savedIncludeDecimals = JSON.parse(
+    localStorage.getItem("includeDecimals") || "false"
+  );
+
+  // State for checkboxes
+  const [includeNegative, setIncludeNegative] = useState(savedIncludeNegative);
+  const [includeDecimals, setIncludeDecimals] = useState(savedIncludeDecimals);
+
   // Function to generate a random division problem
   const generateProblem = () => {
-    const num2 =
-      Math.floor(Math.random() * (difficultyFactors[currentDifficulty] / 20)) +
-      1;
-    const num1 =
-      num2 *
-      (Math.floor(Math.random() * (difficultyFactors[currentDifficulty] / 20)) +
-        1);
-    return { num1, num2, answer: num1 / num2 };
+    let num1: number;
+    let num2: number;
+
+    if (includeDecimals) {
+      num2 = roundToDecimalPlaces(
+        Math.random() * (difficultyFactors[currentDifficulty] / 20) + 1,
+        3
+      );
+      num1 = roundToDecimalPlaces(
+        num2 *
+          (Math.random() * (difficultyFactors[currentDifficulty] / 20) + 1),
+        3
+      );
+    } else {
+      num2 =
+        Math.floor(
+          Math.random() * (difficultyFactors[currentDifficulty] / 20)
+        ) + 1;
+      num1 =
+        num2 *
+        (Math.floor(
+          Math.random() * (difficultyFactors[currentDifficulty] / 20)
+        ) +
+          1);
+    }
+
+    if (includeNegative) {
+      num1 = num1 * (Math.random() < 0.5 ? -1 : 1);
+      num2 = num2 * (Math.random() < 0.5 ? -1 : 1);
+    }
+
+    return { num1, num2, answer: roundToDecimalPlaces(num1 / num2, 3) };
   };
 
   const [currentProblem, setCurrentProblem] = useState(generateProblem());
+
+  // Save states to localStorage when they change
+  useEffect(() => {
+    localStorage.setItem("includeNegative", JSON.stringify(includeNegative));
+    localStorage.setItem("includeDecimals", JSON.stringify(includeDecimals));
+  }, [includeNegative, includeDecimals]);
 
   // Generate a new problem
   const handleCorrectAnswer = () => {
     setCurrentProblem(generateProblem());
   };
 
-  // Use useEffect to regenerate problems when difficulty changes
+  // Use useEffect to regenerate problems when difficulty or checkbox states change
   useEffect(() => {
     setCurrentProblem(generateProblem());
-  }, [currentDifficulty, difficultyFactors]);
+  }, [currentDifficulty, difficultyFactors, includeNegative, includeDecimals]);
 
   return (
     <>
@@ -69,6 +116,10 @@ const Division: React.FC<DivisionProps> = () => {
             num1={currentProblem.num1}
             num2={currentProblem.num2}
             operation="division"
+            includeNegative={includeNegative}
+            setIncludeNegative={setIncludeNegative}
+            includeDecimals={includeDecimals}
+            setIncludeDecimals={setIncludeDecimals}
           />
         </div>
       </div>
