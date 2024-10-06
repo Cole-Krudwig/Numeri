@@ -22,6 +22,28 @@
  */
 
 import React from "react";
+// Internal Imports
+import { useLanguage } from "./LanguageContext";
+
+// Define the type of languageWords
+type LanguageWords = {
+  [key: string]: {
+    negNums: string;
+  };
+};
+
+// Declare Language
+const languageWords: LanguageWords = {
+  en: {
+    negNums: "Include Negative Numbers",
+  },
+  es: {
+    negNums: "Incluir números negativos",
+  },
+  fr: {
+    negNums: "Inclure des nombres négatifs",
+  },
+};
 
 interface NegativeNumbersCheckboxProps {
   checked: boolean;
@@ -32,6 +54,10 @@ const NegativeNumbersCheckbox: React.FC<NegativeNumbersCheckboxProps> = ({
   checked,
   onChange,
 }) => {
+  // Get current language from context
+  const { currentLanguage } = useLanguage();
+  const words = languageWords[currentLanguage as keyof typeof languageWords];
+
   return (
     <label>
       <input
@@ -39,7 +65,7 @@ const NegativeNumbersCheckbox: React.FC<NegativeNumbersCheckboxProps> = ({
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
       />
-      Include Negative Numbers
+      {words?.negNums || "Include Negative Numbers"}
     </label>
   );
 };

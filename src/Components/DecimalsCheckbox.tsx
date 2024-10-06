@@ -22,6 +22,27 @@
  */
 
 import React from "react";
+import { useLanguage } from "./LanguageContext";
+
+// Define the type of languageWords
+type LanguageWords = {
+  [key: string]: {
+    decimals: string;
+  };
+};
+
+// Declare Language
+const languageWords: LanguageWords = {
+  en: {
+    decimals: "Include Decimals",
+  },
+  es: {
+    decimals: "Incluir decimales",
+  },
+  fr: {
+    decimals: "Inclure les décimales",
+  },
+};
 
 interface DecimalsCheckboxProps {
   checked: boolean;
@@ -32,6 +53,9 @@ const DecimalsCheckbox: React.FC<DecimalsCheckboxProps> = ({
   checked,
   onChange,
 }) => {
+  const { currentLanguage } = useLanguage();
+  const words = languageWords[currentLanguage as keyof typeof languageWords];
+
   return (
     <label>
       <input
@@ -39,7 +63,7 @@ const DecimalsCheckbox: React.FC<DecimalsCheckboxProps> = ({
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
       />
-      Include Decimals
+      {words?.decimals || "Include Decimals"}
     </label>
   );
 };

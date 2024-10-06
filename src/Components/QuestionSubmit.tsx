@@ -137,7 +137,8 @@ const MathOperationInput: React.FC<MathOperationInputProps> = ({
               : operation === "division"
               ? "÷"
               : ""}{" "}
-            {num2} = &nbsp;
+            {num2 < 0 ? `(${num2})` : num2} = &nbsp;{" "}
+            {/* Add parentheses if num2 is negative */}
           </p>
           <div>
             <div className="flex justify-center">
